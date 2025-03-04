@@ -9,7 +9,7 @@ import Job from '../screens/Job/Job';
 
 const Tab = createBottomTabNavigator();
 
-export default function Navigation() { // ✅ Make sure it's exporting correctly
+export default function Navigation() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -22,6 +22,7 @@ export default function Navigation() { // ✅ Make sure it's exporting correctly
           else if (route.name === 'Job') iconName = 'work';
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
+        headerShown: false, // 🔥 Hides header for all screens
       })}
     >
       <Tab.Screen name="Home" component={Home} />
