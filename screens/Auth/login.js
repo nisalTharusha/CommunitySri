@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, StatusBar, TouchableOpacity, ImageBackground, TextInput, Text } from 'react-native';
 
 export default function Login() {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+      navigation.navigate('MainApp');
+    
+  };
 
   return (
     <ImageBackground 
@@ -42,7 +49,7 @@ export default function Login() {
           </TouchableOpacity>
 
           {/* Login Button */}
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}  >
             <Text style={styles.buttonText}>LOGIN</Text>
           </TouchableOpacity>
 
