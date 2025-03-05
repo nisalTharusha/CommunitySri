@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; // Changed to Ionicons
 import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
 import Add from '../screens/Add/Add';
@@ -15,12 +15,17 @@ export default function Navigation() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
-          if (route.name === 'Home') iconName = 'home';
-          else if (route.name === 'Categories') iconName = 'category';
+          if (route.name === 'Home') iconName = 'home-outline';
+          else if (route.name === 'Categories') iconName = 'list-outline';
           else if (route.name === 'Add') iconName = 'add-circle-outline';
-          else if (route.name === 'Profile') iconName = 'person';
-          else if (route.name === 'Job') iconName = 'work';
-          return <MaterialIcons name={iconName} size={size} color={color} />;
+          else if (route.name === 'Profile') iconName = 'person-outline';
+          else if (route.name === 'Job') iconName = 'briefcase-outline'; // Updated to 'briefcase-outline' for a modern touch
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarStyle: {
+          backgroundColor: '#fff', // Clean white background for the tab bar
+          borderTopWidth: 0, // Remove border
+          elevation: 10, // Give it a modern shadow
         },
         headerShown: false, // 🔥 Hides header for all screens
       })}
