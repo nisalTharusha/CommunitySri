@@ -1,71 +1,136 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { TextInput, Button, Text, Provider as PaperProvider } from 'react-native-paper';
+import { View, StyleSheet, StatusBar, TouchableOpacity, ImageBackground, TextInput, Text } from 'react-native';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
-
-  const handleLogin = () => {
-    navigation.navigate('MainApp');
-  };
 
   return (
-    <PaperProvider>
-      <View style={styles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
-        <Text variant="displaySmall" style={styles.title}>Welcome Back!</Text>
-        <TextInput
-          label="Email"
-          mode="outlined"
-          value={email}
-          onChangeText={setEmail}
-          style={styles.input}
-          theme={{ colors: { primary: '#6200ea', underlineColor: 'transparent' } }}
-        />
-        <TextInput
-          label="Password"
-          mode="outlined"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-          style={styles.input}
-          theme={{ colors: { primary: '#6200ea', underlineColor: 'transparent' } }}
-        />
-        <Button mode="contained" onPress={handleLogin} style={styles.button}>
-          Login
-        </Button>
+    <ImageBackground 
+      source={{ uri: 'https://i.ibb.co/ZfRc9Fg/jack-hunter-h-Jgp3g4-He-U8-unsplash.jpg' }} 
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+
+        {/* Brand Name */}
+        <Text style={styles.brandName}>COMMUNITY</Text>
+
+        {/* Form Elements (Email, Password, Forgot Password, etc.) */}
+        <View style={styles.formContainer}>
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.input}
+            placeholderTextColor="#bbb"
+          />
+
+          <TextInput
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            style={styles.input}
+            placeholderTextColor="#bbb"
+          />
+
+          {/* Forgot Password */}
+          <TouchableOpacity style={styles.forgotPassword}>
+            <Text style={styles.linkText}>Forgot Password?</Text>
+          </TouchableOpacity>
+
+          {/* Login Button */}
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </TouchableOpacity>
+
+          {/* Continue as Guest and Sign Up Links in a row */}
+          <View style={styles.rowContainer}>
+            <TouchableOpacity style={styles.guestButton}>
+              <Text style={styles.linkText}>Continue as Guest</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signUpButton}>
+              <Text style={styles.linkText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-    </PaperProvider>
+    </ImageBackground>
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff', // White background for a clean, fresh look
-    paddingHorizontal: 20,
+    width: '100%',
+    height: '100%',
   },
-  title: {
-    fontWeight: '600', // Slightly lighter than bold for a modern look
+  overlay: {
+    flex: 1,
+    justifyContent: 'flex-end', // Align content to the bottom
+    paddingHorizontal: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.6)', // Dark overlay
+  },
+  brandName: {
     fontSize: 30,
-    marginBottom: 40,
-    color: '#333', // Dark text for readability
+    fontWeight: 'bold',
+    letterSpacing: 2,
+    color: '#6c757d',
+    marginTop: 40, // Space from the top
+  },
+  formContainer: {
+    flex: 1,
+    justifyContent: 'flex-end', // Align form to the bottom
+    width: '100%',
   },
   input: {
     width: '100%',
+    height: 50,
     marginBottom: 15,
-    backgroundColor: 'transparent', // Transparent background for a cleaner look
-    borderRadius: 5, // Rounded corners for inputs
+    backgroundColor: '#e9ecef', // Transparent white input
+    borderRadius: 15,
+    color: '#fff',
+    paddingHorizontal: 15,
+  },
+  forgotPassword: {
+    alignSelf: 'flex-end',
+    marginBottom: 20,
   },
   button: {
     width: '100%',
+    paddingVertical: 20,
+    borderRadius: 15,
+    backgroundColor: '#333',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  rowContainer: {
+    flexDirection: 'row', // Align items in a row
+    justifyContent: 'space-between', // Space out items
+    width: '100%',
     marginTop: 20,
-    backgroundColor: '#6200ea', // Vibrant purple for a modern feel
-    borderRadius: 5, // Rounded corners for the button
+    marginBottom:10
+  },
+  guestButton: {
+    marginTop: 20,
+  },
+  signUpButton: {
+    marginTop: 20,
+  },
+  footerText: {
+    marginTop: 15,
+    fontSize: 14,
+    color: '#fff',
+  },
+  linkText: {
+    color: '#bbb',
+    fontWeight: 'bold',
   },
 });
