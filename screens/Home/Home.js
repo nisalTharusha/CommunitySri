@@ -1,20 +1,23 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context'; // SafeAreaView for safe area handling
 import RegionalSelector from '../../GlobalComponents/RegionalSelector';
 import Info from '../Home/HomeComponent/Infor';
 import Post from '../../screens/Home/HomeComponent/post';
+import Header from '../../GlobalComponents/header';
+import QuickFeed from './HomeComponent/QuickFeed'
 
 export default function Home() {
   return (
-    <View style={styles.container}>
-      {/* ScrollView for content to be scrollable */}
+    <SafeAreaView style={styles.container}>
+      <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <RegionalSelector />
-        <Info />
+        <QuickFeed/>
         <Post />
       </ScrollView>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -24,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   scrollContainer: {
-    padding: 16, // Adds space around content
     flexGrow: 1, // Ensures that ScrollView content takes up available space
   },
 });

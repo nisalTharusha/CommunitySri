@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-// Dummy Data (Simulating Posts)
+// Dummy Data (Simulating Posts with Text and Images)
 const posts = [
   {
     id: 1,
@@ -11,6 +11,7 @@ const posts = [
     date: '2h ago',
     text: 'Just finished working on my new project! 🚀 #ReactNative',
     avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+    image: 'https://placekitten.com/800/600', // Optional image
   },
   {
     id: 2,
@@ -19,9 +20,27 @@ const posts = [
     date: '4h ago',
     text: 'Had an amazing time at the park today! 🌳',
     avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+    image: 'https://placekitten.com/800/601', // Optional image
   },
   {
-    id: 3,
+    id: 4,
+    name: 'John Doe',
+    username: '@johndoe',
+    date: '2h ago',
+    text: 'Just finished working on my new project! 🚀 #ReactNative',
+    avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+  },
+  {
+    id: 5,
+    name: 'Jane Smith',
+    username: '@janesmith',
+    date: '4h ago',
+    text: 'Had an amazing time at the park today! 🌳',
+    avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+  },
+
+  {
+    id: 6,
     name: 'Jane Smith',
     username: '@janesmith',
     date: '4h ago',
@@ -48,6 +67,11 @@ export default function Post() {
           {/* Post Text */}
           <Text style={styles.postText}>{post.text}</Text>
 
+          {/* Conditionally Render Image if Available */}
+          {post.image && (
+            <Image source={{ uri: post.image }} style={styles.postImage} />
+          )}
+
           {/* Action Icons (Like, Comment, Share) */}
           <View style={styles.actions}>
             <Ionicons name="heart-outline" size={20} color="#666" />
@@ -64,21 +88,14 @@ export default function Post() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 16,
+    backgroundColor: 'white',
   },
   postContainer: {
-    backgroundColor: '#fff',
-    padding: 16,
+    padding: 10,
+    marginBottom: 15,
+    marginHorizontal:2,
     borderRadius: 10,
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#ddd',
+    backgroundColor:'#f8f9fa'
   },
   profileSection: {
     flexDirection: 'row',
@@ -92,17 +109,24 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   name: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   username: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#666',
   },
   postText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#333',
     marginBottom: 10,
+  },
+  postImage: {
+    width: '100%',
+    height: 200,
+    marginVertical: 10,
+    borderRadius: 10,
+    resizeMode: 'cover',
   },
   actions: {
     flexDirection: 'row',
@@ -110,4 +134,3 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
 });
-

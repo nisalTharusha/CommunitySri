@@ -8,6 +8,8 @@ import Categories from '../screens/Categories/Categories';
 import Job from '../screens/Job/Job';
 import { View, TouchableOpacity } from 'react-native';
 
+
+
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
