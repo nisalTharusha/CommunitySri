@@ -5,9 +5,10 @@ import { Ionicons } from '@expo/vector-icons';
 const categories = [
   { id: '1', title: 'All', icon: 'home', buttonColor: '#007BFF', textColor: '#fff' },
   { id: '2', title: 'Translator', icon: 'language', buttonColor: '#28a745', textColor: '#fff' },
-  { id: '3', title: 'Documents', icon: 'document', buttonColor: '#ffc107', textColor: '#000' },
-  { id: '4', title: 'Help', icon: 'help-circle', buttonColor: '#dc3545', textColor: '#fff' },
-  { id: '5', title: 'Information', icon: 'information-circle', buttonColor: '#17a2b8', textColor: '#fff' },
+  { id: '4', title: 'News', icon: 'newspaper', buttonColor: '#a8dadc', textColor: '#fff' },
+  { id: '3', title: 'Documents', icon: 'document', buttonColor: '#ffc107', textColor: '#fff' },
+  { id: '5', title: 'Help', icon: 'help-circle', buttonColor: '#dc3545', textColor: '#fff' },
+  { id: '6', title: 'Information', icon: 'information-circle', buttonColor: '#17a2b8', textColor: '#fff' },
 ];
 
 export default function QuickFeed() {

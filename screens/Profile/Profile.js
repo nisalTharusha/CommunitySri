@@ -6,6 +6,7 @@ import TabViewExample from './Profile_component/TabView';
 import Header from '../../GlobalComponents/header';
 
 
+
 export default function Profile() {
   return (
     <SafeAreaView style={styles.container}>

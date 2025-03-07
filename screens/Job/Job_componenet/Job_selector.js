@@ -1,23 +1,23 @@
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Job_selector() {
+export default function JobSelector() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <MaterialIcons name="person" size={30} color="black" />
-          <Text style={styles.buttonText}>My</Text>
+          <MaterialIcons name="dehaze" size={24} color="#666" />
+          <Text style={styles.buttonText}>Filters</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
-          <MaterialIcons name="check-circle" size={30} color="black" />
+          <MaterialIcons name="check-circle-outline" size={24} color="#0A66C2" />
           <Text style={styles.buttonText}>Applied</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
-          <MaterialIcons name="save" size={30} color="black" />
-          <Text style={styles.buttonText}>Save</Text>
+          <MaterialIcons name="bookmark-border" size={24} color="#666" />
+          <Text style={styles.buttonText}>Saved</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -26,26 +26,33 @@ export default function Job_selector() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+    padding: 5,
+    backgroundColor: '#F3F2F0', // Light LinkedIn-like background
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '100%', // Ensures the container takes the full width
+    backgroundColor: '#fff',
+    paddingVertical: 5,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
   },
   button: {
-    flex: 1, // Makes the button take equal width
-    flexDirection: 'row', // Aligns icon and text horizontally
-    alignItems: 'center', // Centers both icon and text vertically
-    justifyContent: 'center', 
-    padding: 8, // Adds padding around the icon and text for better spacing
-    borderWidth: 1, // Adds border around the button
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
   },
   buttonText: {
-    marginLeft: 8, // Adds space between the icon and the text
+    marginLeft: 6,
     fontSize: 14,
-    color: 'black',
+    fontWeight: '600',
+    color: '#333',
   },
 });
