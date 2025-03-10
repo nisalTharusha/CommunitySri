@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
 
 const postTypes = [
   { id: '1', title: 'Job Post', icon: 'work-outline' },
@@ -10,16 +11,39 @@ const postTypes = [
   { id: '5', title: 'Question', icon: 'help-outline' },
 ];
 
-export default function PostType() {
-  const [selectedPost, setSelectedPost] = useState(null);
+export default function PostType({ selectedPost, setSelectedPost }) {
   const [isListVisible, setIsListVisible] = useState(true);
+  const slideAnim = useRef(new Animated.Value(100)).current; // Start off-screen
+
+  // Function to start the slide-in animation
+  const runAnimation = () => {
+    slideAnim.setValue(100); // Reset position
+    Animated.timing(slideAnim, {
+      toValue: 0, // Move into view
+      duration: 300, // Smooth transition
+      useNativeDriver: true, // Optimized for performance
+    }).start();
+  };
+
+  // Run animation when the list becomes visible
+  useEffect(() => {
+    if (isListVisible) {
+      runAnimation();
+    }
+  }, [isListVisible]);
+
+  // Reset visibility and re-run animation when the screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      setIsListVisible(true);
+      runAnimation();
+    }, [])
+  );
 
   const handleSelect = (id) => {
     if (selectedPost === id) {
-      // Toggle visibility when clicking the same item
-      setIsListVisible(!isListVisible);
+      setIsListVisible(!isListVisible); // Toggle visibility
     } else {
-      // Select a new item and hide the list
       setSelectedPost(id);
       setIsListVisible(false);
     }
@@ -27,35 +51,35 @@ export default function PostType() {
 
   return (
     <View style={styles.container}>
-      {isListVisible ? (
-        <FlatList 
-          data={postTypes}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={styles.card} onPress={() => handleSelect(item.id)}>
+      <Animated.View style={{ transform: [{ translateY: slideAnim }] }}>
+        {isListVisible ? (
+          postTypes.map((item) => (
+            <TouchableOpacity key={item.id} style={styles.card} onPress={() => handleSelect(item.id)}>
               <MaterialIcons name={item.icon} size={28} color="black" style={styles.icon} />
               <Text style={styles.postText}>{item.title.toUpperCase()}</Text>
             </TouchableOpacity>
-          )}
-          showsVerticalScrollIndicator={false}
-        />
-      ) : (
-        selectedPost && (
-          <TouchableOpacity 
-            style={styles.selectedCard} 
-            onPress={() => setIsListVisible(true)} // Show list again when clicking
-          >
-            <MaterialIcons 
-              name={postTypes.find(item => item.id === selectedPost)?.icon} 
-              size={28} 
-              color="black" 
-            />
-            <Text style={styles.selectedText}>
-              {postTypes.find(item => item.id === selectedPost)?.title.toUpperCase()}
-            </Text>
-          </TouchableOpacity>
-        )
-      )}
+          ))
+        ) : (
+          selectedPost && (
+            <TouchableOpacity
+              style={styles.selectedCard}
+              onPress={() => {
+                setIsListVisible(true);
+                runAnimation(); // Ensure animation runs again
+              }}
+            >
+              <MaterialIcons
+                name={postTypes.find((item) => item.id === selectedPost)?.icon}
+                size={28}
+                color="black"
+              />
+              <Text style={styles.selectedText}>
+                {postTypes.find((item) => item.id === selectedPost)?.title.toUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          )
+        )}
+      </Animated.View>
     </View>
   );
 }
