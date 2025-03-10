@@ -83,9 +83,6 @@ export default function JobPostForm() {
         numberOfLines={4}
       />
 
-      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-        <Text style={styles.submitText}>Post Job</Text>
-      </TouchableOpacity>
     </View>
   );
 }

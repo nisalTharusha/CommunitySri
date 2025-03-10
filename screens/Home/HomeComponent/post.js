@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 // Dummy Data (Simulating Posts with Text and Images)
@@ -54,29 +54,39 @@ export default function Post() {
     <View style={styles.container}>
       {posts.map((post) => (
         <View key={post.id} style={styles.postContainer}>
-          
-          {/* Profile Section */}
-          <View style={styles.profileSection}>
+
+          {/* Profile Section (Tappable) */}
+          <TouchableOpacity style={styles.profileSection} onPress={() => console.log('Profile Clicked')}>
             <Image source={{ uri: post.avatar }} style={styles.avatar} />
             <View>
               <Text style={styles.name}>{post.name}</Text>
               <Text style={styles.username}>{post.username} • {post.date}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
 
           {/* Post Text */}
           <Text style={styles.postText}>{post.text}</Text>
 
-          {/* Conditionally Render Image if Available */}
+          {/* Conditionally Render Image if Available (Tappable) */}
           {post.image && (
-            <Image source={{ uri: post.image }} style={styles.postImage} />
+            <TouchableOpacity onPress={() => console.log('Image Clicked')}>
+              <Image source={{ uri: post.image }} style={styles.postImage} />
+            </TouchableOpacity>
           )}
 
-          {/* Action Icons (Like, Comment, Share) */}
+          {/* Action Icons (Tappable) */}
           <View style={styles.actions}>
-            <Ionicons name="heart-outline" size={20} color="#666" />
-            <Ionicons name="chatbubble-outline" size={20} color="#666" />
-            <Ionicons name="arrow-redo-outline" size={20} color="#666" />
+            <TouchableOpacity onPress={() => console.log('Liked!')}>
+              <Ionicons name="heart-outline" size={20} color="#666" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => console.log('Comment Clicked!')}>
+              <Ionicons name="chatbubble-outline" size={20} color="#666" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => console.log('Shared!')}>
+              <Ionicons name="arrow-redo-outline" size={20} color="#666" />
+            </TouchableOpacity>
           </View>
 
         </View>
@@ -93,9 +103,9 @@ const styles = StyleSheet.create({
   postContainer: {
     padding: 10,
     marginBottom: 15,
-    marginHorizontal:2,
+    marginHorizontal: 2,
     borderRadius: 10,
-    backgroundColor:'#f8f9fa'
+    backgroundColor: '#f8f9fa',
   },
   profileSection: {
     flexDirection: 'row',

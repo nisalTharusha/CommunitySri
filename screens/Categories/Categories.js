@@ -1,21 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import Cat_map from './Cat_component/Cat_map';
 
-
-
-export default function Home() {
+export default function Categories() {
   return (
-    <View style={styles.container}>
-
-    </View>
+    <SafeAreaView style={styles.safeContainer}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Cat_map />
+      </ScrollView>
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeContainer: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  scrollContainer: {
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 20,
   },
 });
