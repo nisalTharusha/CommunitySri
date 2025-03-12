@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 // Dummy Data (Simulating Posts with Text and Images)
 const posts = [
@@ -49,14 +50,30 @@ const posts = [
   },
 ];
 
+
+
+
 export default function Post() {
+
+
+  const navigation = useNavigation();
+
+
+  const handleNavigations =(screen)=>{
+    if(screen="FullPostView"){
+      navigation.navigate('FullPostView');
+    }
+  }
+
+  
+
   return (
     <View style={styles.container}>
       {posts.map((post) => (
         <View key={post.id} style={styles.postContainer}>
 
           {/* Profile Section (Tappable) */}
-          <TouchableOpacity style={styles.profileSection} onPress={() => console.log('Profile Clicked')}>
+          <TouchableOpacity style={styles.profileSection} onPress={() => handleNavigations('UserProfile')}>
             <Image source={{ uri: post.avatar }} style={styles.avatar} />
             <View>
               <Text style={styles.name}>{post.name}</Text>
@@ -69,7 +86,7 @@ export default function Post() {
 
           {/* Conditionally Render Image if Available (Tappable) */}
           {post.image && (
-            <TouchableOpacity onPress={() => console.log('Image Clicked')}>
+            <TouchableOpacity  onPress={() => handleNavigations('FullPostView')}>
               <Image source={{ uri: post.image }} style={styles.postImage} />
             </TouchableOpacity>
           )}
