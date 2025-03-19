@@ -26,21 +26,13 @@ export default function JobSelector() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
-    backgroundColor: '#F3F2F0', // Light LinkedIn-like background
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 5,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 3,
+    backgroundColor: '#f8f9fa',
+    
   },
   button: {
     flex: 1,

@@ -30,7 +30,7 @@ export default function InputComment() {
         
         {/* Send Icon Button */}
         <TouchableOpacity onPress={handleSend} style={styles.sendButton}>
-          <Icon name="send" size={24} color="#007bff" />
+          <Icon name="send" size={18} color="#007bff" />
         </TouchableOpacity>
       </View>
 
@@ -42,27 +42,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+    marginVertical:15
   },
   
   // Container for the comment input and send button
   commentContainer: {
     flexDirection: 'row',  // Arrange the input field and send button in a row
     alignItems: 'center',  // Vertically center the elements
-    backgroundColor: '#fff',  // White background for the input area
+    backgroundColor: '#f8f9fa',  // White background for the input area
     padding: 10,  // Padding inside the container
     borderRadius: 20,  // Rounded corners for the container
-    elevation: 3,  // Slight elevation for shadow effect
   },
 
   // Style for the text input field
   input: {
     flex: 1,  // Allow input field to take all available space
     height: 40,  // Set the height of the input field
-    borderRadius: 20,  // Rounded corners for the input field
+    borderRadius: 10,  // Rounded corners for the input field
     paddingHorizontal: 10,  // Horizontal padding inside the input field
-    fontSize: 16,  // Font size of the input text
+    fontSize: 15,  // Font size of the input text
     color: '#333',  // Text color
   },
 

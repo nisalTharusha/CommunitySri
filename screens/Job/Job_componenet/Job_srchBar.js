@@ -27,7 +27,7 @@ export default function Job_srchBar() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#6c757d',
     padding: 8,
   },
   header: {

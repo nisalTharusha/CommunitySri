@@ -56,21 +56,16 @@ export default function Job_FlatList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F2F0',
     padding: 10,
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#f8f9fa',
     padding: 12,
     borderRadius: 8,
     marginBottom: 10,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
+    
   },
   icon: {
     marginRight: 10,

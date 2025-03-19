@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import UserIDheader from './PostViewComponent/UserIDheader'
 import Actionbtn from './PostViewComponent/Actionbtn';
 import InputComment from './PostViewComponent/InputComment'
+import Comments from './PostViewComponent/Commenst'
 
 export default function FullPostView() {
   const navigation = useNavigation();
@@ -20,12 +21,14 @@ const postData ={avatar:'https://randomuser.me/api/portraits/women/2.jpg' ,name 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
+      <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Header />
+        
         <UserIDheader handleNavigations={handleNavigations} post={postData}/>
         <Image source={{ uri: 'https://randomuser.me/api/portraits/women/2.jpg' }} style={styles.image} />
         <Actionbtn/>
         <InputComment/>
+        <Comments/>
         
       </ScrollView>
     </SafeAreaView>
@@ -39,10 +42,12 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     paddingBottom: 20,  // Add some padding if needed to avoid content touching the bottom
+    paddingHorizontal:10
   },
 
   image: {
     width: '100%',  // Example width
     height: 450, // Example height
+    borderRadius:16
   },
 });

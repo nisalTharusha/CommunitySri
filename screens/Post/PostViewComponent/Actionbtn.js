@@ -13,7 +13,7 @@ export default function Actionbtn() {
         {/* Like Button */}
         <TouchableOpacity style={styles.iconContainer}>
           {/* Thumbs-up icon for the like button */}
-          <Icon name="thumbs-up" size={24} color="#333" />
+          <Icon name="thumbs-up" size={18} color="#333" />
           {/* Text below the icon */}
           <Text style={styles.iconText}>Like</Text>
         </TouchableOpacity>
@@ -21,7 +21,7 @@ export default function Actionbtn() {
         {/* Share Button */}
         <TouchableOpacity style={styles.iconContainer}>
           {/* Share icon for the share button */}
-          <Icon name="share" size={24} color="#333" />
+          <Icon name="share" size={18} color="#333" />
           {/* Text below the icon */}
           <Text style={styles.iconText}>Share</Text>
         </TouchableOpacity>
@@ -29,7 +29,7 @@ export default function Actionbtn() {
         {/* Comment Button */}
         <TouchableOpacity style={styles.iconContainer}>
           {/* Comment icon for the comment button */}
-          <Icon name="message-circle" size={24} color="#333" />
+          <Icon name="message-circle" size={18} color="#333" />
           {/* Text below the icon */}
           <Text style={styles.iconText}>Comment</Text>
         </TouchableOpacity>
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
   // Container for the whole screen
   container: {
     flex: 1,
-    justifyContent: 'center',  // Vertically center the content
-    backgroundColor: '#ecf0f1',  // Light background color
-    padding: 8,  // Padding around the edges
+    justifyContent: 'center',  // Vertically center the content15
+    marginTop:15,
+    marginBottom:15
   },
   
   // Container for the action buttons (like, share, and comment)
@@ -53,14 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',  // Arrange buttons horizontally
     justifyContent: 'space-around',  // Evenly space buttons across the screen
     alignItems: 'center',  // Align items in the center
-    padding: 15,  // Padding inside the container
-    backgroundColor: 'white',  // White background for the container
-    borderRadius: 12,  // Rounded corners for a soft look
-    shadowColor: '#000',  // Shadow color for iOS
-    shadowOffset: { width: 0, height: 1 },  // Shadow offset for slight elevation
-    shadowOpacity: 0.2,  // Soft shadow opacity
-    shadowRadius: 2,  // Radius of the shadow blur
-    elevation: 3,  // Elevation for Android shadow
+   
   },
 
   // Style for each icon-container (like, share, comment button)
@@ -70,7 +63,7 @@ const styles = StyleSheet.create({
 
   // Style for the text below each icon
   iconText: {
-    fontSize: 14,  // Font size for the text
+    fontSize: 10,  // Font size for the text
     color: '#333',  // Dark gray color for the text
     marginTop: 4,  // Space between the icon and text
   },

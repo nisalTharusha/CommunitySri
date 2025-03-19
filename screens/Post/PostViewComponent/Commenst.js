@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
 export default function Comments() {
-  // Dummy comments data with profile pictures and time info
   const comments = [
     { 
       id: '1', 
@@ -48,41 +47,33 @@ export default function Comments() {
 
   return (
     <SafeAreaView style={styles.container}>
-      
-      {/* Title for the comments section */}
       <Text style={styles.title}>Comments</Text>
 
-      {/* Map over the comments array to render each comment */}
       {comments.map(item => (
         <View key={item.id} style={styles.commentItem}>
           <View style={styles.commentHeader}>
-            {/* Profile Picture */}
             <Image source={{ uri: item.avatar }} style={styles.avatar} />
             
             <View style={styles.commentBody}>
-              {/* Username */}
               <Text style={styles.commentName}>{item.name}</Text>
-              
-              {/* Comment Text */}
               <Text style={styles.commentText}>{item.comment}</Text>
 
-              {/* Time, Like, and Reply */}
               <View style={styles.commentFooter}>
                 <Text style={styles.commentTime}>{item.time}</Text>
 
-                <TouchableOpacity style={styles.likeButton}>
-                  <Text style={styles.likeText}>Like ({item.likes})</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.replyButton}>
-                  <Text style={styles.replyText}>Reply</Text>
-                </TouchableOpacity>
+                <View style={styles.actionButtons}>
+                  <TouchableOpacity style={styles.likeButton}>
+                    <Text style={styles.likeText}>❤️ {item.likes}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.replyButton}>
+                    <Text style={styles.replyText}>Reply</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
         </View>
       ))}
-      
     </SafeAreaView>
   );
 }
@@ -90,73 +81,73 @@ export default function Comments() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 16,
-    textAlign: 'center',
+    marginVertical: 14,
+    color: '#222',
   },
   commentItem: {
-    backgroundColor: '#fff',
-    padding: 12,
-    borderRadius: 8,
+    backgroundColor: '#f8f9fa',
+    padding: 14,
+    borderRadius: 12,
     marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 3,
+   
   },
   commentHeader: {
     flexDirection: 'row',
-    alignItems: 'flex-start', // Ensuring avatar and comment body are aligned properly
+    alignItems: 'flex-start',
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+    marginRight: 12,
   },
   commentBody: {
-    flexDirection: 'column',
     flex: 1,
   },
   commentName: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#333',
     marginBottom: 4,
   },
   commentText: {
     fontSize: 14,
-    color: '#333',
+    color: '#444',
     marginBottom: 8,
   },
   commentFooter: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   commentTime: {
     fontSize: 12,
-    color: '#666',
+    color: '#888',
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    gap: 12,
   },
   likeButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
   likeText: {
     fontSize: 14,
-    color: '#007bff',
+    color: '#E63946',
+    fontWeight: '500',
   },
   replyButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
   replyText: {
     fontSize: 14,
     color: '#007bff',
+    fontWeight: '500',
   },
 });
