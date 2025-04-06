@@ -12,7 +12,8 @@ export default function Header() {
   };
 
   const goToNotifications = () => {
-    navigation.navigate('Notifications'); // Assuming you have a Notifications screen
+    console.log('jw')
+    navigation.navigate('NotificationScreen'); // Assuming you have a Notifications screen
   };
 
   return (
